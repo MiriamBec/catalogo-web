@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catálogo de Películas</title>
+  </head>
+  <body
+    class="bg-image text-center"
+    style="
+      background-image: url('../../assets/images/background.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    "
+  >
+    <img
+      src="../../assets/images/logo.png"
+      alt="logo"
+      class="rounded mx-auto d-block"
+      style="width: 300px; margin-bottom: -50px"
+    />
+
+    <div class="container mt-5">
+      <p class="lead pb-4">
+        Bienvenido al catálogo de películas, donde encontrarás las películas más
+        vistas y mejores valoradas del 2021
+      </p>
+      <h2 class="mb-4">Movies List</h2>
+      <a [routerLink]="['new']" class="btn btn-warning m-4"
+        ><i class="bi bi-plus me-2"></i>New Movie</a
+      >
+      <div class="table-responsive">
+        <table class="table table-hover table-striped table-bordered">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Title</th>
+              <th scope="col">Year</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let movie of movies; let i = index">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ movie.title }}</td>
+              <td>{{ movie.year }}</td>
+              <td>
+                <a
+                  [routerLink]="[movie.id]"
+                  class="btn btn-primary btn-sm me-4"
+                >
+                  <i class="bi bi-eye"></i> View Details
+                </a>
+                <a
+                  [routerLink]="[movie.id, 'edit']"
+                  class="btn btn-info btn-sm me-4"
+                >
+                  Edit
+                </a>
+
+                <!-- Botón de eliminar-->
+                <a
+                  [routerLink]="[movie.id, 'delete']"
+                  class="btn btn-danger btn-sm"
+                >
+                  Delete
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <footer class="bg-secondary text-center my-5 py-4">
+      <p class="text-white">
+        Materia: Conceptualización de servicios en la nube
+      </p>
+      <p class="text-white">Nombre: Miriam Patricia Becerra Castro</p>
+      <p class="text-white">Código: 223371308</p>
+      <p class="text-white">Correo: miriam.becerra&#64;udgvirtual.udg.mx</p>
+      <p class="text-white">Asesor: Oscar Gregorio Silva Mares</p>
+    </footer>
+  </body>
+</html>
